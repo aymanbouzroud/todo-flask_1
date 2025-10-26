@@ -2,7 +2,6 @@ from flask import Flask, request, url_for, redirect, render_template
 
 app = Flask(__name__)
 
-# Définir tasks en global
 tasks = [
     {"id": 1, "title": "train", "done": False},
     {"id": 2, "title": "sleep", "done": True}
@@ -17,7 +16,7 @@ def ajout():
     titre = request.form.get("title")
     if not titre:
         return redirect(url_for('home'))
-    # Ajouter une nouvelle tâche
+   
     tasks.append({"id": len(tasks) + 1, "title": titre, "done": False})
     return redirect(url_for('home'))
 
