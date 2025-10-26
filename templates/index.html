@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Liste des tâches</h2>
+
+{% if tasks|length == 0 %}
+    <p>Aucune tâche créée</p>
+{% else %}
+    <table border="2">
+        <tr>
+            <th>Titre</th>
+            <th>État</th>
+            <th>Actions</th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.title }}</td>
+            <td>{% if task.done %}Fait{% else %}Non fait{% endif %}</td>
+            <td>
+                <a href="{{ url_for('done', task_id=task.id) }}">Terminer</a> |
+                <a href="{{ url_for('delete', task_id=task.id) }}">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+<hr>
+
+<h3>Ajouter une nouvelle tâche</h3>
+<form action="{{ url_for('ajout') }}" method="POST">
+
+    <input type="text" name="title" placeholder="Nom de la tâche">
+    <button type="submit">Ajouter</button>
+</form>
+
+{% endblock %}
