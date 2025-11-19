@@ -2,16 +2,16 @@
 
 {% block content %}
 
-<h2>Liste des tâches</h2>
+<h2>liste des taches</h2>
 
 {% if tasks|length == 0 %}
-    <p>Aucune tâche créée</p>
+    <p>Aucune ache </p>
 {% else %}
     <table border="2">
         <tr>
             <th>Titre</th>
-            <th>État</th>
-            <th>Actions</th>
+            <th>etat</th>
+            <th>Action</th>
         </tr>
         {% for task in tasks %}
         <tr>
@@ -28,10 +28,10 @@
 
 <hr>
 
-<h3>Ajouter une nouvelle tâche</h3>
+<h3>Ajouter nv tache</h3>
 <form action="{{ url_for('ajout') }}" method="POST">
 
-    <input type="text" name="title" placeholder="Nom de la tâche">
+    <input type="text" name="title" placeholder="Nom de la tache">
     <button type="submit">Ajouter</button>
 </form>
 
